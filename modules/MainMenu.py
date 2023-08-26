@@ -53,17 +53,14 @@ class MainMenuWindow(Screen):
 
 
 	async def _scan_devices(self):
-		parser = argparse.ArgumentParser()
+		connectable_devices = False
 
-		parser.add_argument(
-			"--macos-use-bdaddr",
-			action="store_true",
-			help="when true use Bluetooth address instead of UUID on macOS",
-		)
+		while connectable_devices == False:
+			devices = await bleak.BleakScanner.discover(30)
 
-		args = parser.parse_args()
-
-		devices = await bleak.BleakScanner.discover(5)
+			for device in devices:
+				if device.name != None:
+					connectable_devices = True
 
 		if len(devices) == 0:
 			print("No devices found")

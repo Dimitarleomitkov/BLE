@@ -34,6 +34,20 @@
             root.connect_device()
 
 
+    Button:
+        id: exit_btn
+        text: "Exit"
+        size_hint_x: None
+        size_hint_y: None
+        width: 200
+        height: 60
+        pos_hint: {'x': 0.6, 'y': 0.25}
+        opacity: 1
+        disabled: False
+        on_release:
+            root.Exit()
+
+
     TextInput:
         id: device_address_input
         size_hint_x: None
