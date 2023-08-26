@@ -1,0 +1,43 @@
+<MainMenuWindow>:
+    name: "MainMenu"
+
+
+    FloatLayout:
+        id: Flayout
+
+
+    Button:
+        id: scan_btn
+        text: "Scan for Devices"
+        size_hint_x: None
+        size_hint_y: None
+        width: 150
+        height: 30
+        pos_hint: {'x': 0.5, 'y': 0.2}
+        opacity: 1
+        disabled: False
+        on_release:
+            root.scan_devices()
+
+    Button:
+        id: connect_btn
+        text: "Connect to Bluetooth"
+        size_hint_x: None
+        size_hint_y: None
+        width: 150
+        height: 30
+        pos_hint: {'x': 0.5, 'y': 0.5}
+        opacity: 1
+        disabled: False
+        on_release:
+            root.connect_device()
+
+
+    TextInput:
+        id: device_address_input
+        size_hint_x: None
+        size_hint_y: None
+        width: 300
+        height: 200
+        pos_hint: {'x': 0, 'y': 0.7}
+        hint_text: "Enter device address"

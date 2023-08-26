@@ -1,0 +1,53 @@
+<CreateWindow>
+	name: "CreateWindow"
+
+	BoxLayout:
+		orientation: 'vertical'
+		size: root.width, root.height
+
+		Spinner:
+			id: table_spinner
+			size_hint: None, None
+			height: 70
+			text: "Select Table"
+			values: 
+				['Items', 'Chemicals', 'Workplaces', 'Suppliers', 'Mixture types',\
+				'RFS', 'IC', 'MC']
+			size_hint_x: 1
+			on_text:
+				root.cmd_handler(table_spinner.text)
+
+		GridLayout:
+			cols: 4
+			rows: 7
+			id: entry_grid
+
+		Label:
+			id: error_label
+			size_hint_y: None
+			multiline: True
+			height: 80
+			size_hint_x: None
+			width: 600
+			text_size: cm(10), cm(4)
+
+		AnchorLayout:
+			Button:
+				text: "Submit"
+				size_hint_y: None
+				height: 40
+				size_hint_x: None
+				width: 200
+				on_release: 
+					root.submit_entry(table_spinner.text)
+
+
+		Button:
+			text: "Main Menu"
+			size_hint_y: None
+			height: 40
+			size_hint_x: None
+			width: 200
+			on_release: 
+				app.root.current = "MainMenu"
+				root.manager.transition.direction = "right"

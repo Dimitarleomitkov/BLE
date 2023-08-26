@@ -1,0 +1,348 @@
+<DeleteWindow>
+	name: "DeleteWindow"
+	label_1: in_label_1
+	text_1: in_text_1
+	label_2: in_label_2
+	text_2: in_text_2
+	label_3: in_label_3
+	text_3: in_text_3
+	label_4: in_label_4
+	text_4: in_text_4
+	label_5: in_label_5
+	text_5: in_text_5
+	label_6: in_label_6
+	text_6: in_text_6
+	label_7: in_label_7
+	text_7: in_text_7
+	label_8: in_label_8
+	text_8: in_text_8
+	label_9: in_label_9
+	text_9: in_text_9
+	label_10: in_label_10
+	text_10: in_text_10
+	label_11: in_label_11
+	text_11: in_text_11
+	label_12: in_label_12
+	text_12: in_text_12
+	label_13: in_label_13
+	text_13: in_text_13
+	label_14: in_label_14
+	text_14: in_text_14
+
+
+	BoxLayout:
+		orientation: 'vertical'
+		size: root.width, root.height
+
+		Spinner:
+			id: table_spinner
+			size_hint: None, None
+			height: 70
+			text: "Select Table"
+			values: 
+				['Items', 'Chemicals', 'Workplaces', 'Suppliers', 'Mixture types',\
+				'RFS', 'IC', 'MC']
+			size_hint_x: 1
+			on_text:
+				if table_spinner.text == "Items": root.visualize_item()
+				elif table_spinner.text == "Chemicals": root.visualize_chemical()
+				elif table_spinner.text == "Workplaces": root.visualize_workplace()
+				elif table_spinner.text == "Suppliers": root.visualize_supplier()
+				elif table_spinner.text == "Mixture types": root.visualize_mix_type()
+				elif table_spinner.text == "RFS": root.visualize_rf()
+				elif table_spinner.text == "IC": root.visualize_ic()
+				elif table_spinner.text == "MC": root.visualize_mc()
+
+
+		GridLayout:
+			cols: 4
+			rows: 7
+
+
+			Label:
+				id: in_label_1
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_1
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_2
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_2
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_3
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_3
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_4
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_4
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_5
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_5
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_6
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_6
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_7
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_7
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_8
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_8
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_9
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_9
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_10
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_10
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_11
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_11
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_12
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_12
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_13
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_13
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+			Label:
+				id: in_label_14
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 150
+				text: "0"
+				opacity: 0
+				disabled: True
+
+			TextInput:
+				id: in_text_14
+				multiline: False
+				size_hint_y: None
+				height: 40
+				size_hint_x: 1
+				width: 200
+				opacity: 0
+				disabled: True
+
+
+		AnchorLayout:
+			Button:
+				text: "Delete"
+				size_hint_y: None
+				height: 40
+				size_hint_x: None
+				width: 200
+				on_release: 
+					root.delete_chemical()
+
+		Button:
+			text: "Main Menu"
+			size_hint_y: None
+			height: 40
+			size_hint_x: None
+			width: 200
+			on_release: 
+				app.root.current = "MainMenu"
+				root.manager.transition.direction = "right"
