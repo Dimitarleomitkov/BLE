@@ -84,7 +84,6 @@ class MainMenuWindow(Screen):
 		loop.run_until_complete(self._connect_device())
 
 
-
 	async def _connect_device(self):
 		device_address = self.ids.device_address_input.text[:-1]
 		my_device = False

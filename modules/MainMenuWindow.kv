@@ -11,22 +11,23 @@
         text: "Scan for Devices"
         size_hint_x: None
         size_hint_y: None
-        width: 150
-        height: 30
-        pos_hint: {'x': 0.5, 'y': 0.2}
+        width: 200
+        height: 60
+        pos_hint: {'x': 0.6, 'y': 0.85}
         opacity: 1
         disabled: False
         on_release:
             root.scan_devices()
+
 
     Button:
         id: connect_btn
         text: "Connect to Bluetooth"
         size_hint_x: None
         size_hint_y: None
-        width: 150
-        height: 30
-        pos_hint: {'x': 0.5, 'y': 0.5}
+        width: 200
+        height: 60
+        pos_hint: {'x': 0.6, 'y': 0.75}
         opacity: 1
         disabled: False
         on_release:

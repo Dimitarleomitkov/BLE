@@ -1,0 +1,7 @@
+# Ignore virtual environment files
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Ignore shared files
+share/
