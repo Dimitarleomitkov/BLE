@@ -3,9 +3,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
-import bleak
+# import bleak
 import asyncio
 import argparse
+from bluepy import btle
+
 # from kivy.uix.widget import Widget
 # from kivy.properties import ColorProperty
 # from kivy.uix.label import Label
@@ -44,26 +46,9 @@ class MainMenuWindow(Screen):
 		Window.minimum_width = 600
 		Window.minimum_height = 800
 
-
 	def scan_devices(self):
 		self.ids.device_address_input.text = ""
-		loop = asyncio.new_event_loop()
-		asyncio.set_event_loop(loop)
-		loop.run_until_complete(self._scan_devices())
-
-
-	async def _scan_devices(self):
-		parser = argparse.ArgumentParser()
-
-		parser.add_argument(
-			"--macos-use-bdaddr",
-			action="store_true",
-			help="when true use Bluetooth address instead of UUID on macOS",
-		)
-
-		args = parser.parse_args()
-
-		devices = await bleak.BleakScanner.discover(5)
+		devices = self._scan_devices()
 
 		if len(devices) == 0:
 			print("No devices found")
@@ -72,37 +57,94 @@ class MainMenuWindow(Screen):
 		self.g_devices = devices
 
 		for device in devices:
-			print(f"{device}")
-			print(f"{device.name}-{device.address}")
-			address = "".join(device.address)
+			print(f"{device.addr} - {device.addrType}")
+			address = device.addr
 			self.ids.device_address_input.text += address + '\n'
 
+	def _scan_devices(self):
+		scanner = btle.Scanner()
+		devices = scanner.scan(60.0)  # Scan for 60 seconds
+		return devices
 
 	def connect_device(self):
-		loop = asyncio.new_event_loop()
-		asyncio.set_event_loop(loop)
-		loop.run_until_complete(self._connect_device())
-
-
-	async def _connect_device(self):
 		device_address = self.ids.device_address_input.text[:-1]
 		my_device = False
 
 		for device in self.g_devices:
-			if device_address == device.address:
+			if device_address == device.addr:
 				my_device = device
 			else:
-				print(f"{device_address} != {device.address}")
+				print(f"{device_address} != {device.addr}")
 
 		try:
-			async with bleak.BleakClient(my_device) as client:
-				for service in client.services:
-					print(f"  service {service.uuid}")
-					for characteristic in service.characteristics:
-						print(f"  characteristic {characteristic.uuid} {hex(characteristic.handle)} ({len(characteristic.descriptors)} descriptors)")
-		except bleak.exc.BleakError as e:
-			print(f"  error {e}")
-			print("\n\n")
+			peripheral = btle.Peripheral(my_device)
+			services = peripheral.getServices()
+			for service in services:
+				print(f"Service UUID: {service.uuid}")
+				characteristics = service.getCharacteristics()
+				for characteristic in characteristics:
+					print(f"  Characteristic UUID: {characteristic.uuid}")
+		except btle.BTLEException as e:
+			print(f"Error: {e}")
+
+	# def scan_devices(self):
+	# 	self.ids.device_address_input.text = ""
+	# 	loop = asyncio.new_event_loop()
+	# 	asyncio.set_event_loop(loop)
+	# 	loop.run_until_complete(self._scan_devices())
+
+
+	# async def _scan_devices(self):
+	# 	parser = argparse.ArgumentParser()
+
+	# 	parser.add_argument(
+	# 		"--macos-use-bdaddr",
+	# 		action="store_true",
+	# 		help="when true use Bluetooth address instead of UUID on macOS",
+	# 	)
+
+	# 	args = parser.parse_args()
+
+	# 	devices = await bleak.BleakScanner.discover(60)
+
+	# 	if len(devices) == 0:
+	# 		print("No devices found")
+	# 		return
+
+	# 	self.g_devices = devices
+
+	# 	for device in devices:
+	# 		print(f"{device}")
+	# 		print(f"{device.name}-{device.address}")
+	# 		address = "".join(device.address)
+	# 		self.ids.device_address_input.text += address + '\n'
+
+
+	# def connect_device(self):
+	# 	loop = asyncio.new_event_loop()
+	# 	asyncio.set_event_loop(loop)
+	# 	loop.run_until_complete(self._connect_device())
+
+
+	# async def _connect_device(self):
+	# 	device_address = self.ids.device_address_input.text[:-1]
+	# 	my_device = False
+
+	# 	for device in self.g_devices:
+	# 		if device_address == device.address:
+	# 			my_device = device
+	# 		else:
+	# 			print(f"{device_address} != {device.address}")
+
+	# 	try:
+	# 		async with bleak.BleakClient(my_device) as client:
+	# 			for service in client.services:
+	# 				print(f"  service {service.uuid}")
+	# 				for characteristic in service.characteristics:
+	# 					print(f"  characteristic {characteristic.uuid} {hex(characteristic.handle)} ({len(characteristic.descriptors)} descriptors)")
+	# 	except bleak.exc.BleakError as e:
+	# 		print(f"  error {e}")
+	# 		print("\n\n")
 
 
 	# def error_screen(self, err_msg):
