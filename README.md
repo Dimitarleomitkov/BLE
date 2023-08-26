@@ -6,11 +6,20 @@ Kivy BLE app
 ```
 python -m venv .
 ```
-3. Install all the libraries from libs.txt
+3. Activate the virtual environment
+Windows
+```
+./Scripts/activate
+```
+Linux
+```
+source /Scripts/bin/activate
+```
+5. Install all the libraries from libs.txt
 ```
 pip install -r libs.txt
 ```
-4. Run BLE.py
+5. Run BLE.py
 ```
 python BLE.py
 ```
