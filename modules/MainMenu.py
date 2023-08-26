@@ -68,9 +68,9 @@ class MainMenuWindow(Screen):
 
 		self.g_devices = devices
 
+		print("\nFound devices:\n")
 		for device in devices:
 			print(f"{device}")
-			print(f"{device.name}-{device.address}")
 			address = "".join(device.address)
 			self.ids.device_address_input.text += address + '\n'
 
