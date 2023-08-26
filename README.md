@@ -14,7 +14,7 @@ Windows
 ```
 Linux
 ```
-source /Scripts/bin/activate
+source /bin/activate
 ```
 4. Install all the libraries from libs.txt
 ```
