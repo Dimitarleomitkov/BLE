@@ -5,3 +5,4 @@ pyvenv.cfg
 
 # Ignore shared files
 share/
+*.pyc
