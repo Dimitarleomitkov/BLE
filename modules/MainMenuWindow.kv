@@ -6,6 +6,16 @@
         id: Flayout
 
 
+    TextInput:
+        id: device_address_input
+        size_hint_x: None
+        size_hint_y: None
+        width: 300
+        height: 200
+        pos_hint: {'x': 0, 'y': 0.75}
+        hint_text: "Enter device address"
+
+
     Button:
         id: scan_btn
         text: "Scan for Devices"
@@ -13,7 +23,7 @@
         size_hint_y: None
         width: 200
         height: 60
-        pos_hint: {'x': 0.6, 'y': 0.85}
+        pos_hint: {'x': 0.6, 'y': 0.923}
         opacity: 1
         disabled: False
         on_release:
@@ -27,7 +37,7 @@
         size_hint_y: None
         width: 200
         height: 60
-        pos_hint: {'x': 0.6, 'y': 0.75}
+        pos_hint: {'x': 0.6, 'y': 0.843}
         opacity: 1
         disabled: False
         on_release:
@@ -41,18 +51,69 @@
         size_hint_y: None
         width: 200
         height: 60
-        pos_hint: {'x': 0.6, 'y': 0.25}
+        pos_hint: {'x': 0.6, 'y': 0.763}
         opacity: 1
         disabled: False
         on_release:
             root.Exit()
 
 
-    TextInput:
-        id: device_address_input
+    Label:
+        id: speed_lb
+        text: "Speed: XXX.X km/h"
         size_hint_x: None
         size_hint_y: None
-        width: 300
-        height: 200
-        pos_hint: {'x': 0, 'y': 0.7}
-        hint_text: "Enter device address"
+        width: 200
+        height: 60
+        pos_hint: {'x': 0, 'y': 0.650}
+        opacity: 1
+        disabled: False
+
+
+    Label:
+        id: current_lb
+        text: "Current: XX.X A"
+        size_hint_x: None
+        size_hint_y: None
+        width: 200
+        height: 60
+        pos_hint: {'x': 0, 'y': 0.550}
+        opacity: 1
+        disabled: False
+
+
+    Label:
+        id: Voltage_lb
+        text: "Voltage: XX.X V"
+        size_hint_x: None
+        size_hint_y: None
+        width: 200
+        height: 60
+        pos_hint: {'x': 0, 'y': 0.450}
+        opacity: 1
+        disabled: False
+
+
+    Label:
+        id: travelled_lb
+        text: "Travelled: XXX.X km"
+        size_hint_x: None
+        size_hint_y: None
+        width: 200
+        height: 60
+        pos_hint: {'x': 0.4, 'y': 0.650}
+        opacity: 1
+        disabled: False
+
+
+    Label:
+        id: kilometers_left_lb
+        text: "Speed: XXX.X km"
+        size_hint_x: None
+        size_hint_y: None
+        width: 200
+        height: 60
+        pos_hint: {'x': 0.4, 'y': 0.550}
+        opacity: 1
+        disabled: False
+        
